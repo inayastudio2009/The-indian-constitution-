@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1e3a8a">
+<title>CBSE Class 7 Civics – The Indian Constitution Mock Test</title>
+<style>
+:root{
+  --navy:#14307a; --blue:#2563eb; --sky:#e8f0ff; --violet:#7c5cd6; --lav:#f1ecff;
+  --ink:#1b2447; --mute:#64708f; --line:#dbe3f5; --bg:#f5f8ff; --card:#fff;
+  --ok:#16a34a; --okbg:#e7f8ee; --bad:#dc2626; --badbg:#fdecec;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.5;padding-bottom:env(safe-area-inset-bottom)}
+button{font-family:inherit;font-size:inherit;cursor:pointer}
+.wrap{max-width:640px;margin:0 auto;padding:0 14px 28px}
+.hidden{display:none!important}
+
+/* Start screen */
+.hero{background:linear-gradient(160deg,var(--navy),#3b2f9e 70%,var(--violet));color:#fff;padding:calc(36px + env(safe-area-inset-top)) 20px 34px;border-radius:0 0 28px 28px}
+.hero h1{font-size:1.7rem;line-height:1.2;margin:10px 0 8px;letter-spacing:-.01em}
+.hero p{margin:0;color:#d9e2ff}
+.tag{display:inline-block;background:rgba(255,255,255,.16);padding:5px 12px;border-radius:99px;font-size:.85rem}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:-22px 14px 0;position:relative}
+.fact{background:var(--card);border-radius:16px;padding:14px 6px;text-align:center;box-shadow:0 6px 18px rgba(20,48,122,.12)}
+.fact b{display:block;font-size:1.35rem;color:var(--blue)}
+.fact span{font-size:.8rem;color:var(--mute)}
+.rules{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 18px;margin:18px 0}
+.rules h2{font-size:1.05rem;margin:0 0 8px}
+.rules ul{margin:0;padding-left:20px;color:var(--mute)}
+.rules li{margin:5px 0}
+
+.btn{border:0;border-radius:14px;min-height:52px;padding:0 20px;font-weight:650;transition:transform .12s,background .2s,opacity .2s}
+.btn:active{transform:scale(.97)}
+.btn.primary{background:linear-gradient(135deg,var(--blue),var(--violet));color:#fff;width:100%;box-shadow:0 8px 20px rgba(80,70,210,.28)}
+.btn.ghost{background:var(--sky);color:var(--navy)}
+.btn.submit{background:var(--navy);color:#fff}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+
+/* Test header */
+.top{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line);padding:calc(8px + env(safe-area-inset-top)) 14px 10px}
+.top-in{max-width:640px;margin:0 auto}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.chip{background:var(--sky);border-radius:12px;padding:6px 10px;min-width:0}
+.chip small{display:block;color:var(--mute);font-size:.7rem;line-height:1.2}
+.chip b{font-variant-numeric:tabular-nums;font-size:1.08rem;color:var(--navy)}
+.chip.timer{background:var(--navy)}
+.chip.timer small{color:#b9c8f5}.chip.timer b{color:#fff;font-size:1.3rem}
+.chip.timer.low{background:var(--bad);animation:pulse 1s infinite}
+@keyframes pulse{50%{opacity:.75}}
+.bar{height:8px;background:var(--line);border-radius:9px;margin-top:9px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--violet));border-radius:9px;transition:width .4s}
+.barlbl{display:flex;justify-content:space-between;font-size:.76rem;color:var(--mute);margin-top:4px}
+
+/* Navigator */
+.nav{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:12px;margin:14px 0}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.qn{height:42px;border-radius:11px;border:1.5px solid var(--line);background:#fff;color:var(--mute);font-weight:650;transition:all .15s}
+.qn.done{background:var(--blue);border-color:var(--blue);color:#fff}
+.qn.cur{border-color:var(--violet);box-shadow:0 0 0 3px var(--lav);color:var(--violet);background:#fff}
+.qn.cur.done{background:var(--violet);border-color:var(--violet);color:#fff}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-size:.78rem;color:var(--mute)}
+.legend span:before{content:"";display:inline-block;width:11px;height:11px;border-radius:4px;margin-right:5px;vertical-align:-1px;border:1.5px solid var(--line)}
+.legend .a:before{background:var(--blue);border-color:var(--blue)}
+.legend .c:before{border-color:var(--violet);background:var(--lav)}
+
+/* Question card */
+.qcard{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px 16px;box-shadow:0 8px 24px rgba(20,48,122,.07)}
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.lvl{font-size:.8rem;font-weight:650;padding:4px 11px;border-radius:99px}
+.lvl.Easy{background:#e3f6ec;color:#15803d}.lvl.Medium{background:#fff3da;color:#a15c07}.lvl.Hard{background:var(--lav);color:#5b3bb8}
+.qt{font-size:.85rem;color:var(--mute)}
+.qtext{font-size:1.1rem;font-weight:600;line-height:1.5;margin:0 0 16px}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{display:flex;align-items:center;gap:12px;text-align:left;width:100%;min-height:58px;padding:11px 14px;border:1.5px solid var(--line);background:#fff;color:var(--ink);border-radius:14px;transition:background .2s,border-color .2s,transform .1s}
+.opt:active:not(:disabled){transform:scale(.985)}
+.opt .l{flex:none;width:34px;height:34px;border-radius:50%;background:var(--sky);color:var(--navy);display:grid;place-items:center;font-weight:700}
+.opt .t{flex:1;min-width:0;overflow-wrap:anywhere}
+.opt .m{flex:none;font-weight:800;font-size:1.1rem}
+.opt:not(:disabled):hover{border-color:var(--blue)}
+.opt:disabled{cursor:default}
+.opt.right{background:var(--okbg);border-color:var(--ok)}
+.opt.right .l{background:var(--ok);color:#fff}.opt.right .m{color:var(--ok)}
+.opt.wrong{background:var(--badbg);border-color:var(--bad)}
+.opt.wrong .l{background:var(--bad);color:#fff}.opt.wrong .m{color:var(--bad)}
+.opt.dim{opacity:.6}
+.exp{margin-top:14px;padding:13px 14px;border-radius:14px;background:var(--lav);border-left:4px solid var(--violet);animation:slide .3s ease}
+.exp.ok{background:var(--okbg);border-left-color:var(--ok)}
+.exp.no{background:var(--badbg);border-left-color:var(--bad)}
+.exp b{display:block;margin-bottom:3px}
+.exp p{margin:0;color:#34406a;font-size:.95rem}
+@keyframes slide{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+.ctrl{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.ctrl .btn.primary{width:auto}
+.submitrow{margin-top:10px}
+.submitrow .btn{width:100%}
+
+/* Modal */
+.modal{position:fixed;inset:0;background:rgba(15,25,60,.55);display:flex;align-items:flex-end;justify-content:center;z-index:50;padding:0}
+.sheet{background:#fff;width:100%;max-width:640px;border-radius:24px 24px 0 0;padding:22px 18px calc(22px + env(safe-area-inset-bottom));animation:slide .25s ease}
+.sheet h3{margin:0 0 6px}.sheet p{margin:0 0 16px;color:var(--mute)}
+.sheet .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+/* Results */
+.rhero{background:linear-gradient(160deg,var(--navy),#3b2f9e 70%,var(--violet));color:#fff;text-align:center;padding:calc(30px + env(safe-area-inset-top)) 18px 40px;border-radius:0 0 28px 28px}
+.ring{width:150px;height:150px;border-radius:50%;margin:14px auto;display:grid;place-items:center;background:conic-gradient(#fff var(--p,0%),rgba(255,255,255,.2) 0)}
+.ring div{width:122px;height:122px;border-radius:50%;background:#2b3a97;display:grid;place-items:center;align-content:center}
+.ring b{font-size:2.3rem;line-height:1}.ring span{font-size:.85rem;color:#cdd8ff}
+.perf{display:inline-block;margin-top:4px;padding:7px 18px;border-radius:99px;font-weight:700;background:#fff}
+.perf.Excellent{color:#15803d}.perf.Good{color:#1d4ed8}.perf.Needs{color:#b91c1c}
+.rmsg{margin:10px 0 0;color:#d9e2ff}
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:-22px 0 18px;position:relative}
+.sc{background:#fff;border-radius:16px;padding:13px 14px;box-shadow:0 6px 18px rgba(20,48,122,.12)}
+.sc small{color:var(--mute);display:block;font-size:.78rem}
+.sc b{font-size:1.3rem;color:var(--navy)}
+.sc.g b{color:var(--ok)}.sc.r b{color:var(--bad)}.sc.y b{color:#b7791f}
+.rv{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px}
+.rv .h{display:flex;justify-content:space-between;gap:8px;font-size:.8rem;margin-bottom:6px;flex-wrap:wrap}
+.st{font-weight:700;padding:2px 10px;border-radius:99px}
+.st.c{background:var(--okbg);color:var(--ok)}.st.w{background:var(--badbg);color:var(--bad)}.st.u{background:#eef0f6;color:var(--mute)}
+.rv h4{margin:0 0 8px;font-size:1rem;line-height:1.45}
+.rv .ln{font-size:.92rem;margin:3px 0;overflow-wrap:anywhere}
+.rv .ln b.ok{color:var(--ok)}.rv .ln b.no{color:var(--bad)}
+.rv .e{margin-top:8px;padding:10px 12px;background:var(--lav);border-radius:12px;font-size:.9rem;color:#34406a}
+h2.sec{font-size:1.15rem;margin:18px 2px 10px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:360px){.qtext{font-size:1.02rem}}
+</style>
+</head>
+<body>
+
+<!-- START -->
+<section id="start">
+  <div class="hero">
+    <div class="wrap" style="padding-bottom:0">
+      <span class="tag">CBSE Class 7 · Civics</span>
+      <h1>The Indian Constitution<br>Mock Test</h1>
+      <p>Practice like the real exam and get instant feedback on every answer.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="facts" style="margin-left:0;margin-right:0">
+      <div class="fact"><b>15</b><span>Questions</span></div>
+      <div class="fact"><b>15</b><span>Marks</span></div>
+      <div class="fact"><b>No</b><span>Time limit</span></div>
+    </div>
+    <div class="rules">
+      <h2>Before you begin</h2>
+      <ul>
+        <li>Questions get harder: 5 easy, 5 medium, 5 hard.</li>
+        <li>Each question carries 1 mark. There is no negative marking.</li>
+        <li>You see the result and explanation right after you answer.</li>
+        <li>An answer is locked once you select it.</li>
+        <li>There is no time limit. Take as long as you need.</li>
+      </ul>
+    </div>
+    <button class="btn primary" id="startBtn">Start test</button>
+  </div>
+</section>
+
+<!-- TEST -->
+<section id="test" class="hidden">
+  <div class="top"><div class="top-in">
+    <div class="stats">
+      <div class="chip"><small>Elapsed</small><b id="elapsed">00:00</b></div>
+      <div class="chip"><small>This question</small><b id="qtime">00:00</b></div>
+    </div>
+    <div class="bar"><i id="bar"></i></div>
+    <div class="barlbl"><span id="plabel">0 of 15 answered</span><span id="ppct">0%</span></div>
+  </div></div>
+
+  <div class="wrap">
+    <div class="nav">
+      <div class="grid" id="grid"></div>
+      <div class="legend"><span class="a">Answered</span><span>Unanswered</span><span class="c">Current</span></div>
+    </div>
+
+    <div class="qcard" id="qcard">
+      <div class="qhead"><span class="lvl" id="lvl"></span><span class="qt" id="qno"></span></div>
+      <p class="qtext" id="qtext"></p>
+      <div class="opts" id="opts"></div>
+      <div id="expbox"></div>
+    </div>
+
+    <div class="ctrl">
+      <button class="btn ghost" id="prev">Previous</button>
+      <button class="btn primary" id="next">Next</button>
+    </div>
+    <div class="submitrow"><button class="btn submit" id="submit">Submit test</button></div>
+  </div>
+</section>
+
+<!-- CONFIRM -->
+<div class="modal hidden" id="modal"><div class="sheet">
+  <h3>Submit the test?</h3>
+  <p id="mtext"></p>
+  <div class="row">
+    <button class="btn ghost" id="mno">Keep going</button>
+    <button class="btn submit" id="myes">Submit now</button>
+  </div>
+</div></div>
+
+<!-- RESULTS -->
+<section id="result" class="hidden">
+  <div class="rhero">
+    <div class="wrap" style="padding-bottom:0">
+      <div class="tag">Civics · Result</div>
+      <div class="ring" id="ring"><div><b id="rscore">0</b><span>out of 15</span></div></div>
+      <div class="perf" id="perf"></div>
+      <p class="rmsg" id="rmsg"></p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="sgrid">
+      <div class="sc"><small>Overall percentage</small><b id="rpct"></b></div>
+      <div class="sc"><small>Total time taken</small><b id="rtime"></b></div>
+      <div class="sc g"><small>Correct answers</small><b id="rc"></b></div>
+      <div class="sc r"><small>Incorrect answers</small><b id="rw"></b></div>
+      <div class="sc y"><small>Unattempted</small><b id="ru"></b></div>
+      <div class="sc"><small>Average time per question</small><b id="ravg"></b></div>
+    </div>
+    <button class="btn primary" id="retake">Retake test</button>
+    <h2 class="sec">Answer review</h2>
+    <div id="review"></div>
+  </div>
+</section>
+
+<script>
+(function(){
+var Q=[
+{l:"Easy",q:"When did the Indian Constitution come into effect?",o:["15 August 1947","26 January 1950","26 November 1949","2 October 1950"],a:1,e:"The Constitution came into effect on 26 January 1950, which we celebrate as Republic Day. It was adopted on 26 November 1949 and India became independent on 15 August 1947."},
+{l:"Easy",q:"Who was the Chairman of the Drafting Committee of the Indian Constitution?",o:["Mahatma Gandhi","Jawaharlal Nehru","Dr. B. R. Ambedkar","Sardar Vallabhbhai Patel"],a:2,e:"Dr. B. R. Ambedkar chaired the Drafting Committee of the Constituent Assembly, so he is called the Chief Architect of the Constitution."},
+{l:"Easy",q:"What is the supreme law of India?",o:["Parliament","The Constitution","The Supreme Court","The President"],a:1,e:"The Constitution is the supreme law of the land. All laws, the government and every institution must follow it."},
+{l:"Easy",q:"Which of the following is a key feature of the Indian Constitution?",o:["Dictatorship","Monarchy","Federalism","Military rule"],a:2,e:"Federalism, where power is shared between the Central and State Governments, is a key feature. India is a democratic republic, not a monarchy or a dictatorship."},
+{l:"Easy",q:"What does secularism mean?",o:["India has an official religion.","The government treats all religions equally.","Only one religion is allowed.","People cannot follow any religion."],a:1,e:"In a secular state there is no official religion. The government treats all religions equally and every person is free to follow any faith."},
+{l:"Medium",q:"Why does a country need a Constitution?",o:["To give unlimited power to the government.","To establish rules and principles for governing the country.","To remove all elections.","To allow only one political party."],a:1,e:"A Constitution lays down the basic rules and principles of governing a country. It also limits the power of the government and protects citizens."},
+{l:"Medium",q:"What is meant by universal adult franchise in India?",o:["Only educated people can vote.","Only rich people can vote.","Every citizen aged 18 years or above can vote, subject to legal conditions.","Only government employees can vote."],a:2,e:"Universal adult franchise means every adult citizen (18 years or above) has the right to vote, irrespective of religion, caste, gender, education or wealth."},
+{l:"Medium",q:"Which feature of the Indian Constitution divides powers between the Central and State Governments?",o:["Secularism","Federalism","Monarchy","Dictatorship"],a:1,e:"Federalism divides powers between the Central and State Governments. Their subjects are listed in the Union, State and Concurrent Lists."},
+{l:"Medium",q:"What is the main purpose of Fundamental Rights?",o:["To give special privileges to rich people.","To protect the basic rights and freedoms of citizens.","To give unlimited power to the government.","To stop people from expressing their opinions."],a:1,e:"Fundamental Rights protect the basic rights and freedoms of citizens. They also stop the government from misusing its power."},
+{l:"Medium",q:"What does the term \"Equality\" mean in the Indian Constitution?",o:["Everyone must have the same job.","Everyone is equal before the law.","Only powerful people have rights.","Different laws apply to different religions."],a:1,e:"Equality means every person is equal before the law. There can be no discrimination on grounds such as religion, caste, gender or place of birth."},
+{l:"Hard",q:"A government makes a law that discriminates against people based on their religion. Which constitutional principle does this violate?",o:["Federalism","Secularism","Parliamentary government","Universal adult franchise"],a:1,e:"Treating people differently because of their religion goes against secularism. The state must treat all religions equally."},
+{l:"Hard",q:"If the Central Government and a State Government disagree about their powers, which feature of the Constitution helps determine their respective responsibilities?",o:["Federalism","Monarchy","Dictatorship","Religious rule"],a:0,e:"Federalism clearly divides powers between the Centre and the States. The Constitution, with the courts, settles such disagreements."},
+{l:"Hard",q:"Why is it important to separate the powers of the legislature, executive and judiciary?",o:["To concentrate all power in one institution.","To prevent misuse of power and maintain checks and balances.","To stop the judiciary from functioning.","To remove the role of Parliament."],a:1,e:"When the three organs have separate powers, each one checks the others. This prevents any one institution from misusing power."},
+{l:"Hard",q:"Which of the following situations best represents the principle of equality?",o:["A school allows admission only to children from wealthy families.","A public institution treats people equally regardless of their religion or caste.","A government provides rights only to selected communities.","A person is denied a job because of their religion."],a:1,e:"Equality means no discrimination on grounds of religion or caste. The other three options show unequal treatment."},
+{l:"Hard",q:"Why is the Constitution considered a living document?",o:["It can never be changed.","It changes automatically every year.","It can be amended according to changing needs and circumstances.","It applies only to the people who wrote it."],a:2,e:"The Constitution can be amended through a fixed legal process, so it can respond to the changing needs of society while keeping its basic values."}
+];
+var N=Q.length, L=["A","B","C","D"];
+var $=function(id){return document.getElementById(id)};
+var cur,ans,spent,startTs,qStart,tick,done,tLeftFrozen;
+
+function fmt(s){s=Math.max(0,Math.round(s));var m=Math.floor(s/60),r=s%60;return (m<10?"0":"")+m+":"+(r<10?"0":"")+r}
+function fmtL(s){s=Math.round(s);return s<60?s+" sec":Math.floor(s/60)+" min "+(s%60)+" sec"}
+function show(id){["start","test","result"].forEach(function(x){$(x).classList.toggle("hidden",x!==id)});window.scrollTo(0,0)}
+function esc(t){return String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+
+function begin(){
+  cur=0;ans=new Array(N).fill(-1);spent=new Array(N).fill(0);done=false;
+  startTs=Date.now();qStart=Date.now();
+  buildGrid();render();show("test");
+  clearInterval(tick);tick=setInterval(update,250);update();
+}
+function commitTime(){ if(ans[cur]<0&&!done){spent[cur]+=(Date.now()-qStart)/1000} qStart=Date.now() }
+function liveSpent(){ return ans[cur]<0 ? spent[cur]+(Date.now()-qStart)/1000 : spent[cur] }
+function update(){
+  var el=(Date.now()-startTs)/1000;
+  $("elapsed").textContent=fmt(el);$("qtime").textContent=fmt(liveSpent());
+}
+function buildGrid(){
+  var g=$("grid");g.innerHTML="";
+  for(var i=0;i<N;i++){(function(i){
+    var b=document.createElement("button");b.className="qn";b.textContent=i+1;b.setAttribute("aria-label","Question "+(i+1));
+    b.onclick=function(){go(i)};g.appendChild(b);
+  })(i)}
+}
+function go(i){ if(i<0||i>=N)return; commitTime();cur=i;render() }
+function render(){
+  var q=Q[cur],a=ans[cur];
+  $("lvl").textContent=q.l;$("lvl").className="lvl "+q.l;
+  $("qno").textContent="Question "+(cur+1)+" of "+N;
+  $("qtext").textContent=q.q;
+  var o=$("opts");o.innerHTML="";
+  q.o.forEach(function(t,i){
+    var b=document.createElement("button");b.className="opt";
+    b.innerHTML='<span class="l">'+L[i]+'</span><span class="t">'+esc(t)+'</span><span class="m"></span>';
+    if(a>=0){
+      b.disabled=true;
+      if(i===q.a){b.classList.add("right");b.lastChild.textContent="✓"}
+      else if(i===a){b.classList.add("wrong");b.lastChild.textContent="✗"}
+      else b.classList.add("dim");
+    }else b.onclick=function(){pick(i)};
+    o.appendChild(b);
+  });
+  var ex=$("expbox");
+  if(a>=0){
+    var ok=a===q.a;
+    ex.innerHTML='<div class="exp '+(ok?"ok":"no")+'"><b>'+(ok?"Correct!":"Incorrect. The right answer is "+L[q.a]+".")+'</b><p>'+esc(q.e)+'</p></div>';
+  }else ex.innerHTML="";
+  $("prev").disabled=cur===0;
+  $("next").disabled=cur===N-1;
+  refresh();
+}
+function pick(i){
+  if(ans[cur]>=0||done)return;
+  spent[cur]+=(Date.now()-qStart)/1000;qStart=Date.now();
+  ans[cur]=i;render();update();
+}
+function refresh(){
+  var n=ans.filter(function(x){return x>=0}).length,p=Math.round(n/N*100);
+  $("bar").style.width=p+"%";$("plabel").textContent=n+" of "+N+" answered";$("ppct").textContent=p+"%";
+  var c=$("grid").children;
+  for(var i=0;i<N;i++){c[i].className="qn"+(ans[i]>=0?" done":"")+(i===cur?" cur":"")}
+}
+function askSubmit(){
+  var un=ans.filter(function(x){return x<0}).length;
+  $("mtext").textContent=un?("You have "+un+" unanswered question"+(un>1?"s":"")+". Unanswered questions score 0."):"You have answered every question.";
+  $("modal").classList.remove("hidden");
+}
+function finish(auto){
+  if(done)return;
+  commitTime();done=true;clearInterval(tick);
+  var el=(Date.now()-startTs)/1000;
+  $("modal").classList.add("hidden");
+  var c=0,w=0,u=0;
+  ans.forEach(function(a,i){ if(a<0)u++; else if(a===Q[i].a)c++; else w++; });
+  var pct=Math.round(c/N*1000)/10;
+  var lvl=pct>=80?"Excellent":pct>=50?"Good":"Needs Improvement";
+  var cls=pct>=80?"Excellent":pct>=50?"Good":"Needs";
+  $("rscore").textContent=c;
+  $("ring").style.setProperty("--p",pct+"%");
+  $("perf").textContent=lvl;$("perf").className="perf "+cls;
+  $("rmsg").textContent=(pct>=80?"Great work. You know these topics well.":pct>=50?"A good effort. Revise the questions you missed.":"Revise the topics and review the explanations below.");
+  $("rpct").textContent=pct+"%";$("rtime").textContent=fmtL(el);
+  $("rc").textContent=c;$("rw").textContent=w;$("ru").textContent=u;
+  $("ravg").textContent=fmtL(el/N);
+  var r=$("review");r.innerHTML="";
+  Q.forEach(function(q,i){
+    var a=ans[i],st=a<0?["u","Unattempted"]:a===q.a?["c","Correct"]:["w","Incorrect"];
+    var d=document.createElement("div");d.className="rv";
+    d.innerHTML='<div class="h"><span><b>Q'+(i+1)+'</b> · '+q.l+' · '+fmtL(spent[i])+'</span><span class="st '+st[0]+'">'+st[1]+'</span></div>'+
+      '<h4>'+esc(q.q)+'</h4>'+
+      '<div class="ln">Your answer: <b class="'+(a<0?"":a===q.a?"ok":"no")+'">'+(a<0?"Not attempted":L[a]+". "+esc(q.o[a]))+'</b></div>'+
+      '<div class="ln">Correct answer: <b class="ok">'+L[q.a]+'. '+esc(q.o[q.a])+'</b></div>'+
+      '<div class="e">'+esc(q.e)+'</div>';
+    r.appendChild(d);
+  });
+  show("result");
+}
+$("startBtn").onclick=begin;
+$("prev").onclick=function(){go(cur-1)};
+$("next").onclick=function(){go(cur+1)};
+$("submit").onclick=askSubmit;
+$("mno").onclick=function(){$("modal").classList.add("hidden")};
+$("myes").onclick=function(){finish(false)};
+$("retake").onclick=function(){show("start")};
+})();
+</script>
+</body>
+</html>
